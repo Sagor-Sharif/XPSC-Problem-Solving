@@ -39,11 +39,6 @@ int main()
         first_length++;
         second_length++;
         cout<<(second_length-first_length)+1<<endl;
-
-
     }
-
-
-
     return 0;
 }
