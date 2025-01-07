@@ -10,50 +10,40 @@ int main()
     cin>>t;
     while(t--)
     {
-        int n;
-        cin>>n;
+        int n,k;
+        cin>>n>>k;
 
-        vector<int>a(n);
+        vector<int>a(n),b(n);
 
         for(int i=0; i< n; i++)
         {
             cin>>a[i];
         }
-
         for(int i=0; i< n; i++)
         {
-
-            for(int j=i+2; j<n; j++)
-            {
-                if(a[i] > a[j])
-                {
-                    swap(a[i],a[j]);
-                }
-            }
-        }
-        bool sorted = true;
-        for(int i=0; i< n-1; i++)
-        {
-            if(a[i] > a[i+1])
-            {
-                sorted = false;
-                break;
-            }
+            cin>>b[i];
         }
 
-        if(sorted == true)
+        vector<int> c = a;
+        sort(c.begin(),c.end());
+        sort(b.begin(),b.end());
+
+        unordered_map<int, queue<int>> mapping;
+        for (int i = 0; i < n; i++)
         {
-            cout<<"YES"<<endl;
+            mapping[c[i]].push(b[i]);
         }
-        else
-            cout<<"NO"<<endl;
+        for (int i = 0; i < n; i++)
+        {
+            cout << mapping[a[i]].front() << " ";
+            mapping[a[i]].pop();
+        }
+        cout<<endl;
+
+
 
     }
-
-
-
     return 0;
 }
-
 
 
